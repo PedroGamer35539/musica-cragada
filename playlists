@@ -109,6 +109,17 @@
   const firstScriptTag = document.getElementsByTagName('script')[0];
   firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
+  // Coloque o "window." antes do nome da funcao:
+  window.onYouTubeIframeAPIReady = function() {
+  player = new YT.Player('playerYoutube', {
+    videoId: playlist[0].id,
+    events: {
+      'onStateChange': quandoEstadoMudar
+    }
+  });
+  desenharPlaylist();
+};
+
   function onYouTubeIframeAPIReady() {
     player = new YT.Player('playerYoutube', {
       videoId: playlist[0].id,
